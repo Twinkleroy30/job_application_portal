@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'https://job-portal-yash.onrender.com/api/auth';
+  private baseUrl = 'http://localhost:5297/api/auth';
 
   private userSubject = new BehaviorSubject<boolean>(!!localStorage.getItem('user'));
   userStatus$ = this.userSubject.asObservable();

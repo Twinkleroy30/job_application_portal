@@ -18,7 +18,7 @@ interface Job {
   providedIn: 'root',
 })
 export class JobService {
-  private apiUrl = 'https://job-portal-yash.onrender.com/api/jobs';  // Adjust if needed
+  private apiUrl = 'http://localhost:5297/api/jobs';  // Updated for local backend
 
   constructor(private http: HttpClient) {}
 
@@ -37,7 +37,7 @@ export class JobService {
     return this.http.post<Job>(this.apiUrl, job);
   }
   applyForJob(jobId: number, application: { applicant_name: string, email: string } | FormData) {
-    return this.http.post(`https://job-portal-yash.onrender.com/api/jobs/${jobId}/apply`, application);
+    return this.http.post(`http://localhost:5297/api/jobs/${jobId}/apply`, application);
   }
   
   // Update an existing job
@@ -45,11 +45,11 @@ export class JobService {
     return this.http.put<Job>(`${this.apiUrl}/${id}`, job);
   }
   getFavoriteJobs(userId: number): Observable<Job[]> {
-    return this.http.get<Job[]>(`https://job-portal-yash.onrender.com/api/users/${userId}/favorites`);
+    return this.http.get<Job[]>(`http://localhost:5297/api/users/${userId}/favorites`);
   }
   
   updateFavoriteJobs(userId: number, favoriteJobs: number[]): Observable<any> {
-    return this.http.put('https://job-portal-yash.onrender.com/api/users/favorites', { userId, favoriteJobs });
+    return this.http.put('http://localhost:5297/api/users/favorites', { userId, favoriteJobs });
   }
   
   
