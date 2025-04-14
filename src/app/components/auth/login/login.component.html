@@ -1,20 +1,37 @@
 <style>
+ 
+    .page-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .content-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffffff;
+    padding: 20px ; /* Remove top padding */
+    margin-top: -8px
+    }
+    /* Existing styles */
+    
   .login-wrapper {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f3f4f6;
+    background: #ffffff;
     padding: 20px;
   }
 
   .login-card {
     width: 100%;
-    max-width: 400px;
-    padding: 32px;
+    max-width: 480px;
+    padding: 40px;
     border-radius: 16px;
     background-color: #ffffff;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(168, 62, 138, 0.1);
     text-align: center;
   }
 
@@ -22,7 +39,7 @@
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 24px;
-    color: #3f51b5;
+    color: #b53fa7;
   }
 
   .login-form {
@@ -39,6 +56,9 @@
     height: 48px;
     font-size: 16px;
     border-radius: 8px;
+    color: #903f94;
+    background-color: rgb(255, 255, 255);
+  border: 1px solid #d30073;
   }
 
   .register-link {
@@ -47,12 +67,14 @@
   }
 
   .register-link a {
-    color: #3f51b5;
+    color: #b13fb5;
     text-decoration: none;
     font-weight: 500;
   }
 </style>
-
+<div class="page-container">
+  <app-navbar></app-navbar>
+ 
 <div class="login-wrapper">
   <mat-card class="login-card">
     <h2 class="title">Login</h2>

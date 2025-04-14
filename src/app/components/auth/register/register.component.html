@@ -1,95 +1,198 @@
 <style>
   .register-wrapper {
-    height: 100vh;
+    height: 40vh;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    background: #f3f4f6;
-    padding: 20px;
+    background: #ffffff; 
+  } 
+  /* From Uiverse.io by marc_remus */ 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 20px;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.989);
+  color: #ffffff;
+  border: 1px solid #333;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-left: 40%;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #d30073;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #c44f9d;
+}
+
+.message,
+.signin {
+  font-size: 14.5px;
+  color: #333;
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a:hover {
+  text-decoration: underline rgb(185, 126, 77);
+}
+
+.signin a {
+  color: #d30073;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 13px;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  background-color: #ffffff;
+  color: #181717;
+  width: 100%;
+  padding: 20px 05px 05px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+  border: 1px solid #d30073;
+  margin-bottom: 100;
+}
+
+.form label .input + span {
+  color: rgba(9, 9, 9, 0.5);
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label .input:placeholder-shown + span {
+  top: 12.5px;
+  font-size: 0.9em;
+}
+
+.form label .input:focus + span,
+.form label .input:valid + span {
+  color: #d30073;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.input {
+  font-size: medium;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #d30073;
+  font-size: 16px;
+  transform: 0.3s ease;
+  background-color: whitesmoke;
+  border: 1px solid #d30073;
+}
+
+.submit:hover {
+  background-color: #d30073;
+  color: whitesmoke;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
   }
 
-  .register-card {
-    width: 100%;
-    max-width: 500px;
-    padding: 32px;
-    border-radius: 16px;
-    background-color: #ffffff;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  to {
+    transform: scale(1.8);
+    opacity: 0;
   }
+}
 
-  .title {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 24px;
-    color: #3f51b5;
-  }
 
-  .register-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .full-width {
-    width: 100%;
-  }
-
-  .register-btn {
-    height: 48px;
-    font-size: 16px;
-    border-radius: 8px;
-  }
-
-  .login-link {
-    margin-top: 16px;
-    font-size: 14px;
-  }
-
-  .login-link a {
-    color: #3f51b5;
-    text-decoration: none;
-    font-weight: 500;
-  }
+  
 </style>
-
+<app-navbar></app-navbar>
 <div class="register-wrapper">
   <mat-card class="register-card">
-    <h2 class="title">Register</h2>
+    
 
-    <form (ngSubmit)="register()" class="register-form">
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Full Name</mat-label>
-        <input matInput [(ngModel)]="user.full_name" name="full_name" required />
-      </mat-form-field>
+  <!-- From Uiverse.io by marc_remus --> 
+<form class="form">
+  <p class="title">Register</p>
+  <p class="message">Signup now and get full access to our app.</p>
+  <div class="flex">
+    <label>
+      <input required="" placeholder="" type="text" class="input" />
+      <span>Firstname</span>
+    </label>
+<br> <br>
+    <label>
+      <input required="" placeholder="" type="text" class="input" />
+      <span>Lastname</span>
+    </label>
+  </div>
 
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Username</mat-label>
-        <input matInput [(ngModel)]="user.username" name="username" required />
-      </mat-form-field>
+  <label>
+    <input required="" placeholder="" type="email" class="input" />
+    <span>Email</span>
+  </label>
 
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" [(ngModel)]="user.email" name="email" required />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" [(ngModel)]="user.password" name="password" required />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Phone</mat-label>
-        <input matInput type="tel" [(ngModel)]="user.phone" name="phone" />
-      </mat-form-field>
-
-      <button mat-raised-button color="primary" type="submit" class="full-width register-btn">
-        Register
-      </button>
-    </form>
-
-    <p class="login-link">
-      Already have an account? <a routerLink="/login">Login</a>
-    </p>
-  </mat-card>
-</div>
+  <label>
+    <input required="" placeholder="" type="password" class="input" />
+    <span>Password</span>
+  </label>
+  <label>
+    <input required="" placeholder="" type="password" class="input" />
+    <span>Confirm password</span>
+  </label>
+  <button class="submit">Register<a href="/login"></a></button>
+  <p class="signin">Already have an acount ? <a href="/login">Login</a></p>
+</form>
+  
+    </mat-card>
+  </div>

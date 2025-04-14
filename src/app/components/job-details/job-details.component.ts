@@ -32,9 +32,16 @@ export class JobDetailsComponent implements OnInit {
     this.userId = user.id;
     const jobId = +this.route.snapshot.paramMap.get('id')!;
 
-    this.jobService.getJobById(jobId).subscribe((job) => {
-      this.job = job;
-      this.checkIfFavorite(job.id);
+    this.jobService.getJobById(jobId).subscribe({
+      next: (job) => {
+        console.log('Job data received:', job);
+        this.job = job;
+        this.checkIfFavorite(job.id);
+      },
+      error: (err) => {
+        console.error('Error fetching job:', err);
+        this.snackBar.open('Failed to load job details', 'Close', { duration: 3000 });
+      }
     });
   }
 

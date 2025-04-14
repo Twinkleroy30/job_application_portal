@@ -36,7 +36,7 @@ export class JobService {
   createJob(job: Job): Observable<Job> {
     return this.http.post<Job>(this.apiUrl, job);
   }
-  applyForJob(jobId: number, application: { applicant_name: string, email: string }) {
+  applyForJob(jobId: number, application: { applicant_name: string, email: string } | FormData) {
     return this.http.post(`https://job-portal-yash.onrender.com/api/jobs/${jobId}/apply`, application);
   }
   

@@ -1,14 +1,16 @@
 .sidenav-container {
     height: 64px; // Just the navbar height, not full-page
-    position: relative;
+    position: sticky;
     z-index: 1000;
+    top:0;
   }
   
   .main-toolbar {
     display: flex;
     justify-content: space-between;
     padding: 0 16px;
-    height: 64px;
+    height: revert-layout;
+    background: #b53f73;
   }
   
   .logo {
@@ -18,7 +20,7 @@
   }
   
   .spacer {
-    flex: 1 1 auto;
+    flex: 1 auto;
   }
   
   .desktop-links {
