@@ -15,14 +15,14 @@
         <h4>{{ job.job_title }}</h4>
         <p><strong>🏢</strong> {{ job.company_name }}</p>
         <p><strong>📍</strong> {{ job.location }}</p>
-        <p><strong>⏱️</strong> {{ job.job_type }}</p>
+        <p><strong>⏱️</strong> {{ job.job_type || 'N/A' }}</p>
         <p><strong>💰</strong> {{ job.salary_range || 'N/A' }}</p>
-        <p><strong>🗓️</strong> {{ job.application_deadline | date:'mediumDate' }}</p>
+        <p><strong>🗓️</strong> {{ job.posted_date | date:'mediumDate' }}</p>
 
         <div class="action-buttons">
-          <button class="btn btn-info" (click)="navigateToJobDetails(job.id!)">Details</button>
-          <button class="btn btn-secondary" (click)="navigateToEditJob(job.id!)">Edit</button>
-          <button class="btn btn-warning" (click)="navigateToJobApplicationForm(job.id!)">Apply</button>
+          <button class="btn btn-info" (click)="navigateToJobDetails(job.id)">Details</button>
+          <button class="btn btn-secondary" (click)="navigateToEditJob(job.id)">Edit</button>
+          <button class="btn btn-warning" (click)="navigateToJobApplicationForm(job.id)">Apply</button>
         </div>
       </div>
     </div>

@@ -62,6 +62,12 @@ export class JobDetailsComponent implements OnInit {
       this.favoriteIds.push(this.job.id);
       this.isFavorite = true;
       this.snackBar.open('Added to favorites!', 'Close', { duration: 2000 });
+
+      // Call the AddToFavorites method
+      this.jobService.addToFavorites(this.userId, this.job.id).subscribe({
+        next: () => console.log('✅ Job added to favorites'),
+        error: (err) => console.error('❌ Failed to add job to favorites:', err)
+      });
     }
 
     console.log('📦 Updated favorite IDs:', this.favoriteIds);

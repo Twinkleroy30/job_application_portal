@@ -2,14 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JobService } from '../../services/job.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-interface Job {
-  id: number;
-  job_title: string;
-  company_name: string;
-  location: string;
-  job_type: string;
-}
+import { Job } from '../../models/job';
 
 @Component({
   selector: 'app-job-application-form',
@@ -33,13 +26,7 @@ export class JobApplicationFormComponent implements OnInit {
     this.jobId = +this.route.snapshot.paramMap.get('id')!;
     if (this.jobId) {
       this.jobService.getJobById(this.jobId).subscribe((job) => {
-        this.jobBrief = {
-          id: job.id,
-          job_title: job.job_title,
-          company_name: job.company_name,
-          location: job.location,
-          job_type: job.job_type
-        };
+        this.jobBrief = job;
       });
     }
   }

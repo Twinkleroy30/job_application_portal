@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TINKU\\job-portal\\JobPortalBackend\\JobPortalBackend.csproj": {}
+    "D:\\SHINY\\job_application_portal-1\\JobPortalBackend\\JobPortalBackend.csproj": {}
   },
   "projects": {
-    "D:\\TINKU\\job-portal\\JobPortalBackend\\JobPortalBackend.csproj": {
+    "D:\\SHINY\\job_application_portal-1\\JobPortalBackend\\JobPortalBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TINKU\\job-portal\\JobPortalBackend\\JobPortalBackend.csproj",
+        "projectUniqueName": "D:\\SHINY\\job_application_portal-1\\JobPortalBackend\\JobPortalBackend.csproj",
         "projectName": "JobPortalBackend",
-        "projectPath": "D:\\TINKU\\job-portal\\JobPortalBackend\\JobPortalBackend.csproj",
+        "projectPath": "D:\\SHINY\\job_application_portal-1\\JobPortalBackend\\JobPortalBackend.csproj",
         "packagesPath": "C:\\Users\\TWINKLE ROY\\.nuget\\packages\\",
-        "outputPath": "D:\\TINKU\\job-portal\\JobPortalBackend\\obj\\",
+        "outputPath": "D:\\SHINY\\job_application_portal-1\\JobPortalBackend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
