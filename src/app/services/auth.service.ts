@@ -14,7 +14,12 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, credentials);
+    // Map to PascalCase keys expected by backend
+    const payload = {
+      Email: credentials.email,
+      Password: credentials.password
+    };
+    return this.http.post(`${this.baseUrl}/login`, payload);
   }
 
   register(userData: any): Observable<any> {
