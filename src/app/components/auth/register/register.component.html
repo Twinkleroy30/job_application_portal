@@ -152,47 +152,39 @@
     opacity: 0;
   }
 }
-
-
-  
 </style>
 <app-navbar></app-navbar>
 <div class="register-wrapper">
   <mat-card class="register-card">
-    
-
-  <!-- From Uiverse.io by marc_remus --> 
-<form class="form">
-  <p class="title">Register</p>
-  <p class="message">Signup now and get full access to our app.</p>
-  <div class="flex">
-    <label>
-      <input required="" placeholder="" type="text" class="input" />
-      <span>Firstname</span>
-    </label>
-<br> <br>
-    <label>
-      <input required="" placeholder="" type="text" class="input" />
-      <span>Lastname</span>
-    </label>
-  </div>
-
-  <label>
-    <input required="" placeholder="" type="email" class="input" />
-    <span>Email</span>
-  </label>
-
-  <label>
-    <input required="" placeholder="" type="password" class="input" />
-    <span>Password</span>
-  </label>
-  <label>
-    <input required="" placeholder="" type="password" class="input" />
-    <span>Confirm password</span>
-  </label>
-  <button class="submit">Register<a href="/login"></a></button>
-  <p class="signin">Already have an acount ? <a href="/login">Login</a></p>
-</form>
-  
-    </mat-card>
-  </div>
+    <!-- From Uiverse.io by marc_remus --> 
+    <form class="form" (ngSubmit)="register()" #registerForm="ngForm">
+      <p class="title">Register</p>
+      <p class="message">Signup now and get full access to our app.</p>
+      <div class="flex">
+        <label>
+          <input required type="text" class="input" name="FullName" [(ngModel)]="user.FullName" />
+          <span>Firstname</span>
+        </label>
+        <br><br>
+        <label>
+          <input required type="text" class="input" name="Username" [(ngModel)]="user.Username" />
+          <span>Lastname</span>
+        </label>
+      </div>
+      <label>
+        <input required type="email" class="input" name="Email" [(ngModel)]="user.Email" />
+        <span>Email</span>
+      </label>
+      <label>
+        <input required type="password" class="input" name="Password" [(ngModel)]="user.Password" />
+        <span>Password</span>
+      </label>
+      <label>
+        <input type="text" class="input" name="Phone" [(ngModel)]="user.Phone" />
+        <span>Phone</span>
+      </label>
+      <button type="submit" class="submit" [disabled]="!registerForm.form.valid">Register</button>
+      <p class="signin">Already have an account? <a href="/login">Login</a></p>
+    </form>
+  </mat-card>
+</div>
