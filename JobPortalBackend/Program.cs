@@ -30,12 +30,12 @@ builder.Services.AddSwaggerGen(c =>
 var app = builder.Build();
 
 // Seed the database
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<AppDbContext>();
-    SeedData.Initialize(context);
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+//    var context = services.GetRequiredService<AppDbContext>();
+//    SeedData.Initialize(context);
+//}
 
 // Use CORS policy after app is built
 app.UseCors("AllowFrontend");
