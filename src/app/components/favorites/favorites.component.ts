@@ -18,14 +18,20 @@ export class FavoritesComponent implements OnInit {
   }
 
   loadFavoriteJobs(): void {
-    this.jobService.getFavoriteJobs(1).subscribe({
-      next: (jobs: Job[]) => {
-        this.favoriteJobs = jobs;
-      },
-      error: (err) => {
-        console.error('Failed to load favorite jobs', err);
-      }
-    });
+    const stored = localStorage.getItem('user');
+    const userId = stored ? JSON.parse(stored).id : null;
+    if (userId) {
+      this.jobService.getFavoriteJobs(userId).subscribe({
+        next: (jobs: Job[]) => {
+          this.favoriteJobs = jobs;
+        },
+        error: (err) => {
+          console.error('Failed to load favorite jobs', err);
+        }
+      });
+    } else {
+      console.error('No user logged in, cannot load favorite jobs');
+    }
   }
 
   viewDetails(jobId: number): void {
@@ -33,14 +39,20 @@ export class FavoritesComponent implements OnInit {
   }
 
   removeFromFavorites(jobId: number): void {
-    this.jobService.removeFavoriteJob(1, jobId).subscribe({
-      next: () => {
-        this.favoriteJobs = this.favoriteJobs.filter(job => job.id !== jobId);
-        console.log(`Job ${jobId} removed from favorites`);
-      },
-      error: (err) => {
-        console.error('Failed to remove job from favorites', err);
-      }
-    });
+    const stored = localStorage.getItem('user');
+    const userId = stored ? JSON.parse(stored).id : null;
+    if (userId) {
+      this.jobService.removeFavoriteJob(userId, jobId).subscribe({
+        next: () => {
+          this.favoriteJobs = this.favoriteJobs.filter(job => job.id !== jobId);
+          console.log(`Job ${jobId} removed from favorites`);
+        },
+        error: (err) => {
+          console.error('Failed to remove job from favorites', err);
+        }
+      });
+    } else {
+      console.error('No user logged in, cannot remove favorite job');
+    }
   }
 }

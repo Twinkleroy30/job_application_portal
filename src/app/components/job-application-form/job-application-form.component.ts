@@ -14,6 +14,8 @@ export class JobApplicationFormComponent implements OnInit {
   applicantName = '';
   applicantEmail = '';
   jobBrief: Job | null = null;
+  selectedFileName: string | null = null;
+  isSubmitting = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,14 +33,28 @@ export class JobApplicationFormComponent implements OnInit {
     }
   }
 
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.selectedFileName = file.name;
+    }
+  }
+
   applyForJob(): void {
-    if (!this.jobId || !this.applicantName || !this.applicantEmail) return;
-  
+    if (!this.jobId || !this.applicantName || !this.applicantEmail || !this.selectedFileName) {
+      this.snackBar.open('Please fill all required fields and select a resume.', 'Close', { duration: 3000 });
+      return;
+    }
+
+    this.isSubmitting = true;
+
     const application = {
-      applicant_name: this.applicantName,
-      email: this.applicantEmail
+      JobId: this.jobId,
+      ApplicantName: this.applicantName,
+      ApplicantEmail: this.applicantEmail,
+      ResumeUrl: this.selectedFileName
     };
-  
+
     this.jobService.applyForJob(this.jobId, application).subscribe({
       next: (res: any) => {
         const message = res.message || '✅ Application submitted!';
@@ -48,8 +64,10 @@ export class JobApplicationFormComponent implements OnInit {
       error: (err) => {
         const errorMessage = err.error?.error || '❌ Failed to submit application.';
         this.snackBar.open(errorMessage, 'Close', { duration: 3000 });
+      },
+      complete: () => {
+        this.isSubmitting = false;
       }
     });
   }
-  
 }

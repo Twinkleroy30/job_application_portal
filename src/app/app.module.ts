@@ -21,6 +21,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTableModule } from '@angular/material/table';  // Added MatTableModule
 
 // Components
 import { AppComponent } from './app.component';
@@ -65,18 +66,16 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatGridListModule,
     MatButtonModule,
     MatFormFieldModule,
-  MatInputModule,
-  MatSnackBarModule,
-  MatToolbarModule,
-  MatToolbarModule,
-  MatSidenavModule,
-  MatIconModule,
-  
-  MatListModule,
-  MatSelectModule,
-
-  MatDatepickerModule,
-  MatNativeDateModule
+    MatInputModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule  // Added here
   ],
   providers: [],
   bootstrap: [AppComponent]

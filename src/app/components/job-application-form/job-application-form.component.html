@@ -20,10 +20,16 @@
           <mat-label>Email</mat-label>
           <input matInput type="email" [(ngModel)]="applicantEmail" name="applicantEmail" required />
         </mat-form-field>
+
+        <div class="full-width">
+          <label for="resume">Resume</label>
+          <input type="file" id="resume" (change)="onFileSelected($event)" required />
+          <div *ngIf="selectedFileName">{{ selectedFileName }}</div>
+        </div>
       </mat-card-content>
 
       <mat-card-actions align="end">
-        <button mat-raised-button color="primary" type="submit" [disabled]="!applicationForm.valid">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!applicationForm.form.valid || !selectedFileName">
           Submit Application
         </button>
       </mat-card-actions>

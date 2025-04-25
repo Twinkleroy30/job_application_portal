@@ -21,10 +21,14 @@ export class JobListComponent implements OnInit {
   jobsPerPage: number = 6;
   isDarkMode: boolean = false;
 
+  favoriteJobIds: number[] = [];
+  userId: number = 1; // Assuming logged-in user ID is 1 for demo, replace with actual user ID logic
+
   constructor(private jobService: JobService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadJobs();
+    this.loadFavoriteJobs();
   }
 
   toggleDarkMode(): void {
@@ -41,6 +45,43 @@ export class JobListComponent implements OnInit {
         console.error('Error fetching jobs:', error);
       }
     );
+  }
+
+  loadFavoriteJobs(): void {
+    this.jobService.getFavoriteJobs(this.userId).subscribe(
+      (favJobs: Job[]) => {
+        this.favoriteJobIds = favJobs.map(job => job.id);
+      },
+      (error) => {
+        console.error('Error fetching favorite jobs:', error);
+      }
+    );
+  }
+
+  isFavorite(jobId: number): boolean {
+    return this.favoriteJobIds.includes(jobId);
+  }
+
+  toggleFavorite(jobId: number): void {
+    if (this.isFavorite(jobId)) {
+      this.jobService.removeFavoriteJob(this.userId, jobId).subscribe({
+        next: () => {
+          this.favoriteJobIds = this.favoriteJobIds.filter(id => id !== jobId);
+        },
+        error: (err) => {
+          console.error('Error removing favorite:', err);
+        }
+      });
+    } else {
+      this.jobService.addToFavorites(this.userId, jobId).subscribe({
+        next: () => {
+          this.favoriteJobIds.push(jobId);
+        },
+        error: (err) => {
+          console.error('Error adding favorite:', err);
+        }
+      });
+    }
   }
 
   filterJobs(): void {

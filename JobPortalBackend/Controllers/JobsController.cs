@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using JobPortalBackend.Data;
 using JobPortalBackend.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace JobPortalBackend.Controllers
 {
@@ -90,6 +91,23 @@ namespace JobPortalBackend.Controllers
             }
 
             return NoContent();
+        }
+
+        // POST: api/jobs/{id}/apply
+        [HttpPost("{id}/apply")]
+        public async Task<IActionResult> ApplyForJob(int id, [FromBody] JobApplication application)
+        {
+            var job = await _context.Jobs.FindAsync(id);
+            if (job == null)
+            {
+                return NotFound();
+            }
+
+            // Save the application to the database
+            _context.JobApplications.Add(application);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Application received successfully." });
         }
 
         private bool JobExists(int id)

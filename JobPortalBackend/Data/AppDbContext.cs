@@ -9,6 +9,7 @@ namespace JobPortalBackend.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Job> Jobs { get; set; }
-        public DbSet<Favorite> Favorites { get; set; } // Added DbSet for Favorites
+        public DbSet<Favorite> Favorites { get; set; }
+        public DbSet<JobApplication> JobApplications { get; set; }
     }
 }

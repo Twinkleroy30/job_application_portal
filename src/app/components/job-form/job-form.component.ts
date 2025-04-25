@@ -60,6 +60,9 @@ export class JobFormComponent implements OnInit {
       this.job.salary_range = null;
     }
 
+    // Set posted_date to current date in ISO format before submission
+    this.job.posted_date = new Date().toISOString().split('T')[0];
+
     if (this.isEditMode && this.jobId) {
       this.jobService.updateJob(this.jobId, this.job).subscribe(() => {
         this.snackBar.open('✅ Job updated successfully!', 'Close', { duration: 3000 });
