@@ -49,4 +49,8 @@ export class JobService {
     const favorite: Favorite = { id: 0, userId: userId, jobId: jobId }; // Create a new Favorite object
     return this.http.post<void>(this.favoritesApiUrl, favorite);
   }
+
+  getAppliedJobs(applicantEmail: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/applied/${applicantEmail}`);
+  }
 }

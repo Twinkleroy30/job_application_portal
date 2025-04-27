@@ -38,6 +38,7 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AppliedJobsComponent } from './components/applied-jobs/applied-jobs.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     FavoritesComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    AppliedJobsComponent
   ],
   imports: [
     BrowserModule,

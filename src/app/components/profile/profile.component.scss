@@ -1,6 +1,6 @@
 .profile-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     margin-top: 60px;
   }
@@ -10,10 +10,68 @@
     padding: 40px;
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
   }
   
   .profile-info p {
     margin: 8px 0;
     font-size: 16px;
+  }
+
+  .applied-jobs-card {
+    width: 500px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .job-info {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+
+  .job-info h4 {
+    margin: 0 0 5px 0;
+  }
+
+  .job-info p {
+    margin: 2px 0;
+  }
+
+  .job-item.last-item .job-info {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  /* Add padding similar to favorites list */
+  .applied-jobs-card mat-list-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .applied-jobs-card mat-list-item:last-child {
+    border-bottom: none;
+  }
+
+  .job-info {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+
+  .job-info h4 {
+    margin: 0 0 5px 0;
+  }
+
+  .job-info p {
+    margin: 2px 0;
+  }
+
+  .job-item.last-item .job-info {
+    border-bottom: none;
+    padding-bottom: 0;
   }
   

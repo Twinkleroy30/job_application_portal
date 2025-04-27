@@ -1,0 +1,17 @@
+<mat-card class="applied-jobs-container" *ngIf="appliedJobs.length > 0">
+  <mat-card-title>📄 Your Applied Jobs</mat-card-title>
+  <mat-card-content>
+    <div *ngFor="let job of appliedJobs" class="job-card" (click)="viewDetails(job.id)">
+      <h4>{{ job.jobTitle }}</h4>
+      <p><strong>Company:</strong> {{ job.companyName }}</p>
+      <p><strong>Location:</strong> {{ job.location }}</p>
+      <p><strong>Applied On:</strong> {{ job.applicationDate | date:'medium' }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="appliedJobs.length === 0">
+  <mat-card-content>
+    <p>No applied jobs found.</p>
+  </mat-card-content>
+</mat-card>

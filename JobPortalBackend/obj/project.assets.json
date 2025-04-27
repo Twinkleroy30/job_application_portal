@@ -5470,11 +5470,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\TINKU\\job_application_portal\\JobPortalBackend\\JobPortalBackend.csproj",
+      "projectUniqueName": "C:\\Users\\TWINKLE ROY\\OneDrive\\Desktop\\job_application_portal\\JobPortalBackend\\JobPortalBackend.csproj",
       "projectName": "JobPortalBackend",
-      "projectPath": "D:\\TINKU\\job_application_portal\\JobPortalBackend\\JobPortalBackend.csproj",
+      "projectPath": "C:\\Users\\TWINKLE ROY\\OneDrive\\Desktop\\job_application_portal\\JobPortalBackend\\JobPortalBackend.csproj",
       "packagesPath": "C:\\Users\\TWINKLE ROY\\.nuget\\packages\\",
-      "outputPath": "D:\\TINKU\\job_application_portal\\JobPortalBackend\\obj\\",
+      "outputPath": "C:\\Users\\TWINKLE ROY\\OneDrive\\Desktop\\job_application_portal\\JobPortalBackend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

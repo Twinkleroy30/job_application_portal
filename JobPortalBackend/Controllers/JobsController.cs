@@ -143,6 +143,36 @@ namespace JobPortalBackend.Controllers
             return Ok(new { message = "Application received successfully." });
         }
 
+        [HttpGet("applied/{applicantEmail}")]
+        public async Task<IActionResult> GetAppliedJobs(string applicantEmail)
+        {
+            applicantEmail = applicantEmail?.Trim().ToLower();
+
+            Console.WriteLine($"GetAppliedJobs called with email: {applicantEmail}");
+
+            var appliedJobs = await (from application in _context.JobApplications
+                                     join job in _context.Jobs on application.JobId equals job.Id
+                                     where application.ApplicantEmail.ToLower() == applicantEmail
+                                     select new
+                                     {
+                                         job.Id,
+                                         job.JobTitle,
+                                         job.CompanyName,
+                                         job.Location,
+                                         job.Description,
+                                         job.JobType,
+                                         job.SalaryRange,
+                                         job.ApplicationDeadline,
+                                         job.PostedDate,
+                                         application.ApplicationDate,
+                                         application.ResumeUrl
+                                     }).ToListAsync();
+
+            Console.WriteLine($"Found {appliedJobs.Count} applied jobs for email: {applicantEmail}");
+
+            return Ok(appliedJobs);
+        }
+
         private bool JobExists(int id)
         {
             return _context.Jobs.Any(e => e.Id == id);

@@ -25,6 +25,73 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+---
+
+## How to Restart the Backend Server
+
+To restart the backend server for the Job Portal project, follow these steps:
+
+1. Stop the currently running backend server:
+   - If running in a terminal, press `Ctrl + C` to stop the process.
+   - Alternatively, close the terminal window where the backend is running.
+
+2. Start the backend server again:
+   - Open a terminal or command prompt.
+   - Navigate to the backend project directory:
+     ```
+     cd c:/Users/TWINKLE ROY/OneDrive/Desktop/job_application_portal/JobPortalBackend
+     ```
+   - Run the backend server using the .NET CLI:
+     ```
+     dotnet run
+     ```
+   - The server will start, usually accessible at `http://localhost:5297`.
+
+---
+
+## Tech Stack
+
+| Layer      | Technology                    |
+|------------|------------------------------|
+| Frontend   | Angular 16, Angular Material |
+| Backend    | .NET 9, ASP.NET Core         |
+| Database   | SQLite                      |
+
+---
+
+## Project Structure
+
+```
+JobPortalBackend/
+├── Controllers/
+├── Data/
+├── Migrations/
+├── Models/
+├── Properties/
+├── obj/
+├── bin/
+├── Program.cs
+├── appsettings.json
+├── JobPortalBackend.csproj
+src/
+├── app/
+│   ├── components/
+│   ├── guards/
+│   ├── models/
+│   ├── services/
+│   ├── app.module.ts
+│   ├── app-routing.module.ts
+│   ├── main.ts
+│   ├── styles.scss
+│   └── index.html
+├── assets/
+└── environments/
+```
+
+---
+
+If you need further assistance, feel free to ask.
 # 💼 Job Portal
 
 A full-featured **Job Portal** web application built with Angular 16 (with Angular Material) for the frontend, Node.js (TypeScript) and Express for the backend, and MySQL as the database. Users can register, log in, view jobs, apply, save favorites, and manage their profile. Admins can post, edit, and delete jobs.

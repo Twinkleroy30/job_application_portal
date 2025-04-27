@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { JobService } from '../../services/job.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  selector: 'app-applied-jobs',
+  templateUrl: './applied-jobs.component.html',
+  styleUrls: ['./applied-jobs.component.scss']
 })
-export class ProfileComponent implements OnInit {
-  user: any;
+export class AppliedJobsComponent implements OnInit {
   appliedJobs: any[] = [];
+  user: any;
 
-  constructor(private http: HttpClient, private jobService: JobService) {}
+  constructor(private http: HttpClient, private jobService: JobService, private router: Router) {}
 
   ngOnInit(): void {
     const stored = localStorage.getItem('user');
     const id = stored ? JSON.parse(stored).id : null;
-    console.log('User ID from localStorage:', id);
     if (id) {
       this.http.get(`http://localhost:5297/api/users/${id}`).subscribe(
         (data) => {
-          console.log('User data:', data);
           this.user = data;
           if (this.user && this.user.email) {
             this.loadAppliedJobs(this.user.email);
@@ -28,7 +27,6 @@ export class ProfileComponent implements OnInit {
         },
         (err) => console.error('Failed to load profile:', err)
       );
-
     }
   }
 
@@ -41,5 +39,9 @@ export class ProfileComponent implements OnInit {
         console.error('Failed to load applied jobs:', err);
       }
     });
+  }
+
+  viewDetails(jobId: number): void {
+    this.router.navigate(['/jobs', jobId]);
   }
 }

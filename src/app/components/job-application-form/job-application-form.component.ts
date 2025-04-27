@@ -59,7 +59,7 @@ export class JobApplicationFormComponent implements OnInit {
       next: (res: any) => {
         const message = res.message || '✅ Application submitted!';
         this.snackBar.open(message, 'Close', { duration: 3000 });
-        this.router.navigate(['/jobs']);
+        this.router.navigate(['/applied-jobs']);
       },
       error: (err) => {
         const errorMessage = err.error?.error || '❌ Failed to submit application.';
