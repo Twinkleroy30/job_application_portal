@@ -3,6 +3,9 @@ using JobPortalBackend.Data;
 using JobPortalBackend.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using System;
 
 namespace JobPortalBackend.Controllers
 {
@@ -95,13 +98,43 @@ namespace JobPortalBackend.Controllers
 
         // POST: api/jobs/{id}/apply
         [HttpPost("{id}/apply")]
-        public async Task<IActionResult> ApplyForJob(int id, [FromBody] JobApplication application)
+        public async Task<IActionResult> ApplyForJob(int id, [FromForm] string applicantName, [FromForm] string applicantEmail, IFormFile resume)
         {
             var job = await _context.Jobs.FindAsync(id);
             if (job == null)
             {
                 return NotFound();
             }
+
+            if (resume == null || resume.Length == 0)
+            {
+                return BadRequest("Resume file is required.");
+            }
+
+            // Save the file to a folder, e.g., "Uploads"
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(resume.FileName);
+            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await resume.CopyToAsync(stream);
+            }
+
+            // Create JobApplication object
+            var application = new JobApplication
+            {
+                JobId = id,
+                ApplicantName = applicantName,
+                ApplicantEmail = applicantEmail,
+                ResumeUrl = uniqueFileName,
+                ApplicationDate = DateTime.UtcNow
+            };
 
             // Save the application to the database
             _context.JobApplications.Add(application);

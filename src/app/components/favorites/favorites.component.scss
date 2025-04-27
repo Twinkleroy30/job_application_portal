@@ -1,20 +1,32 @@
 .favorites-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
-    text-align: center;
-  }
-  
-  .job-card {
-    transition: 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .job-card:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  mat-card-actions {
-    justify-content: space-between;
-  }
-  
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 15px rgba(239, 24, 24, 0.05);
+  transition: box-shadow var(--transition-speed) ease;
+}
+
+.favorites-container:hover {
+  box-shadow: 0 6px 25px rgba(203, 34, 34, 0.1);
+}
+
+.job-card {
+  transition: 0.3s ease;
+  cursor: pointer;
+  background-color: var(--color-background);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  color: var(--color-text-primary);
+}
+
+.job-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+// mat-card-actions {
+//   justify-content: space-between;
+// }

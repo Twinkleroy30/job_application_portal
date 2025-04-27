@@ -14,6 +14,7 @@ export class JobApplicationFormComponent implements OnInit {
   applicantName = '';
   applicantEmail = '';
   jobBrief: Job | null = null;
+  selectedFile: File | null = null;
   selectedFileName: string | null = null;
   isSubmitting = false;
 
@@ -36,26 +37,25 @@ export class JobApplicationFormComponent implements OnInit {
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
     if (file) {
+      this.selectedFile = file;
       this.selectedFileName = file.name;
     }
   }
 
   applyForJob(): void {
-    if (!this.jobId || !this.applicantName || !this.applicantEmail || !this.selectedFileName) {
+    if (!this.jobId || !this.applicantName || !this.applicantEmail || !this.selectedFile) {
       this.snackBar.open('Please fill all required fields and select a resume.', 'Close', { duration: 3000 });
       return;
     }
 
     this.isSubmitting = true;
 
-    const application = {
-      JobId: this.jobId,
-      ApplicantName: this.applicantName,
-      ApplicantEmail: this.applicantEmail,
-      ResumeUrl: this.selectedFileName
-    };
+    const formData = new FormData();
+    formData.append('applicantName', this.applicantName);
+    formData.append('applicantEmail', this.applicantEmail);
+    formData.append('resume', this.selectedFile, this.selectedFile.name);
 
-    this.jobService.applyForJob(this.jobId, application).subscribe({
+    this.jobService.applyForJob(this.jobId, formData).subscribe({
       next: (res: any) => {
         const message = res.message || '✅ Application submitted!';
         this.snackBar.open(message, 'Close', { duration: 3000 });
