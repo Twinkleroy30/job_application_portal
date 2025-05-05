@@ -1,4 +1,4 @@
-# Job Portal
+### Job  Application Portal
 
 A full-featured **Job Portal** web application with a modern frontend and robust backend. Users can register, log in, view jobs, apply, save favorites, and manage their profile. Admins can post, edit, and delete jobs.
 
